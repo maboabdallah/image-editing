@@ -9,7 +9,7 @@ let opacity = document.getElementById('opacity')
 let invert = document.getElementById('invert');
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
-
+let mainimg;
 let resetbtn = document.getElementById('reset');
 let downloadbtn = document.getElementById('download');
 let uploadbtn = document.getElementById('upload');
@@ -18,7 +18,7 @@ let imgBox = document.querySelector('.img-box');
 let newimg  ;
 //
 function resetValu() {
-    img.style.filter = 'none';
+    ctx.filter = 'none';
     saturate.value = '100'
     contrast.value= '100'
     brightness.value= '100'
@@ -26,6 +26,8 @@ function resetValu() {
     grayscale.value= '0'
     blur.value= '0'
     rotate.value= '0'
+    opacity.value = '100'
+    mainimg ;
 }
 
 
@@ -49,7 +51,7 @@ uploadbtn.onchange = function () {
     img.onload = function(){
         canvas.width = img.width;
         canvas.height = img.height;
-        ctx.drawImage(img,0,0,canvas.width,canvas.height);
+        let mainimg = ctx.drawImage(img,0,0,canvas.width,canvas.height);
         img.style.display='none';
     }
 };
